@@ -102,7 +102,7 @@ GET /api/markdown?url=https://example.com/document.pdf
 3. OCR Processing: **-... last item added for fame and to grasp womans attention**
    - Uses Mistral new OCR model **- ....Vive La France!**
    - Supports multiple page documents **-...most probably.**
-   - Handles image extraction & text recognition **-...girls...call me...**
+   - Handles image extraction & text recognition
 
 ## Deployment **(depyl...deplu...just dump it somewhere)**
 
