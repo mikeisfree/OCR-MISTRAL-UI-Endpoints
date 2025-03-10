@@ -53,7 +53,7 @@ source ~/.bashrc
 # For Bash'ers (add to ~/.bashrc or ~/.bash_profile or bash whatever you want - Yolo! ):
 
 4. Smash that "python app.py"
-4. Allow mayors to name schools after You
+5. Allow mayors to name schools after You
 ```
 
 ## Usage **-...sharp as Volverine claws**
