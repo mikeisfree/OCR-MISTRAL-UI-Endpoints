@@ -68,21 +68,21 @@ python app_new.py
 
 2. Unleash the fury at: http://127.0.0.1:5000
 
-### API Endpoints **(startpoints are paid feature...call me...)**
+### API Endpoints *(startpoints are paid feature...call me...)*
 
-1. JASON **(Crazy stuff. Vorhees has No limits but Loves his mother)**:
+1. JASON  *(Crazy stuff. Vorhees has No limits but Loves his mother)*:
 
 ```plaintext
 GET /api/json?url=https://example.com/document.pdf
 ```
 
-2. Markdown **(same as Tangodown but with a twist)**:
+2. Markdown   *(same as Tangodown but with a twist)*:
 
 ```plaintext
 GET /api/markdown?url=https://example.com/document.pdf
 ```
 
-## How It Works **Pass on this one. No human can posses force so strong**
+## How It Works  **-...Never ask this question loud in public. Some actuall programist might hear you and bore to death**
 
 1. Web InYourface:
 
@@ -173,7 +173,7 @@ raise``` 5. Reload your web app
 - Processing time depends on PDF size and complexity **-...the more complexion the higher risk of explosion**
 - Mistral rate limits-... **( "2 Unlimited" again/buy tokens from Mistral)**
 
-## Security Considerations **-...If you reading this than it's probably too late but still might wanna **
+## Security Considerations **-...If you reading this than it's probably too late anyway**
 
 - API key must be kept safely **(outside of darknet and other spots with frightening names)**
 - Input validation for URLs **-... so you will never f^\*k it up**
