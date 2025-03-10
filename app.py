@@ -8,29 +8,28 @@ import logging
 import re
 from urllib.parse import urlparse
 
-# Configure logging
+# logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-# Initialize Flask app
+# Init Flask
 app = Flask(__name__)
 
-# Configuration
 MAX_RETRIES = 3
 
 def get_direct_pdf_url(url):
     """Convert various sharing URLs to direct PDF download links"""
     
-    # Google Drive
+    # GDrive
     gdrive_pattern = r'https://drive\.google\.com/file/d/(.*?)/view'
     if match := re.match(gdrive_pattern, url):
         file_id = match.group(1)
         return f'https://drive.google.com/uc?export=download&id={file_id}'
     
-    # Add more services as needed
-    # Example: Dropbox, OneDrive, etc.
+    # Placeholder for more services (Dropbox, OneDrive, etc.)
+ 
     
-    # If no conversion needed, return original URL
+    # If no conversion - return original URL
     return url
 
 def process_ocr_with_retry(url, include_image_base64=True):
@@ -44,16 +43,15 @@ def process_ocr_with_retry(url, include_image_base64=True):
             if not api_key:
                 raise ValueError("MISTRAL_API_KEY environment variable not set")
             
-            # Convert URL if needed
             direct_url = get_direct_pdf_url(url)
             logger.debug(f"Using direct URL: {direct_url}")
             
             with Mistral(api_key=api_key) as client:
                 logger.debug(f"Sending OCR request for URL: {url}")
                 
-                # Process OCR request using the correct model name
+                # OCR request
                 ocr_response = client.ocr.process(
-                    model="mistral-ocr-latest",  # Changed from "Focus" to "mistral-ocr-latest"
+                    model="mistral-ocr-latest",
                     document={
                         "type": "document_url",
                         "document_url": direct_url
@@ -92,12 +90,12 @@ def get_combined_markdown(ocr_response: OCRResponse) -> str:
         markdowns.append(replace_images_in_markdown(page.markdown, image_data))
     return "\n\n".join(markdowns)
 
-# Main UI route
+# Main UI
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# Unified Process OCR route
+# Uni. OCR route
 @app.route('/process_ocr', methods=['POST'])
 def process_ocr():
     try:
@@ -115,7 +113,6 @@ def process_ocr():
                 "format": "json"
             })
         else:
-            # Use enhanced markdown processing with images
             markdown_content = get_combined_markdown(ocr_response)
             
             return jsonify({
@@ -129,7 +126,7 @@ def process_ocr():
         logger.error(traceback.format_exc())
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# API endpoint for Markdown output
+# Endpoint for .md output
 @app.route('/api/markdown', methods=['GET'])
 def api_markdown():
     try:
@@ -140,7 +137,6 @@ def api_markdown():
         logger.info(f"Processing OCR for URL: {url} (Markdown API)")
         ocr_response = process_ocr_with_retry(url)
         
-        # Use enhanced markdown processing
         markdown_content = get_combined_markdown(ocr_response)
         
         return Response(
@@ -154,7 +150,7 @@ def api_markdown():
         return jsonify({"status": "error", "message": str(e)}), 500
     
     
-# API endpoint for JSON output
+# Endpoint JSON output
 @app.route('/api/json', methods=['GET'])
 def api_json():
     try:
@@ -177,11 +173,10 @@ def api_json():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
-    # Print all registered routes for debugging
+    # Print registered routes for debug
     print("Registered routes:")
     for rule in app.url_map.iter_rules():
         print(f"{rule.endpoint}: {rule.rule}")
     
-    # Run the app - configure for both local development and production
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
