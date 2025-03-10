@@ -24,7 +24,7 @@ ROOT/
 
 ## Prerequisites which will make you feel like a real hacker
 
-- Python 3.x **(but install once)**
+- Python 3.x **(install once)**
 - Mistral AI API key **(found somewhere in France)**
 
 ## Installation **-...as enjoyable as trip to the dentist**
@@ -39,21 +39,21 @@ pip install -r requirements.txt
 3. Set up your Mistral AI API key as an environment variable:
 
 ```bash
-# Windows PowerShell
+- # Windows PowerShell
 $env:MISTRAL_API_KEY="your_api_key_here"
 
-# Linux/macOS/hipsterXOS - Temporary (extandable to eternity while listening to a 5 minute dad joke)
+- # Linux/macOS/hipsterXOS - Temporary (extandable to eternity while listening to a 5 minute dad joke)
 export MISTRAL_API_KEY="your_api_key_here"
 
-# Linux/macOS - Permanent (lasts longer than Ozzy Osbourne career)
+- # Linux/macOS - Permanent (lasts longer than Ozzy Osbourne career)
 
 echo 'export MISTRAL_API_KEY="your_api_key_here"' >> ~/.bashrc
 source ~/.bashrc
 
-# For Bash'ers (add to ~/.bashrc or ~/.bash_profile or do wtatever you want tough guy - YoloForLife! ):
+# For Bash'ers (add to ~/.bashrc or ~/.bash_profile or bash whatever you want - Yolo! ):
 
 4. Smash that "python app.py"
-4. Allow mayor to name schools after You
+4. Allow mayors to name schools after You
 ```
 
 ## Usage **-...sharp as Volverine claws**
@@ -102,7 +102,7 @@ GET /api/markdown?url=https://example.com/document.pdf
 3. OCR Processing: **-... last item added for fame and to grasp womans attention**
    - Uses Mistral new OCR model **- ....Vive La France!**
    - Supports multiple page documents **-...most probably.**
-   - Handles image extraction and text recognition **-...girls...call me...**
+   - Handles image extraction & text recognition **-...girls...call me...**
 
 ## Deployment **(depyl...deplu...just dump it somewhere)**
 
@@ -170,13 +170,13 @@ raise``` 5. Reload your web app
 ## Limitations **(if below 21... else ...put on rocket shoes search Youtube for "2 Unlimited")**
 
 - Requires valid PDF URL **(blablabla)**
-- Processing time depends on PDF size **-... and complexity (the more complexion the higher risk of exploexion)**
-- Mistral rate limits-... **( "2 Unlimited" again... or few bucks )**
+- Processing time depends on PDF size and complexity **-...the more complexion the higher risk of explosion**
+- Mistral rate limits-... **( "2 Unlimited" again/buy tokens from Mistral)**
 
-## Security Considerations-... **( God have mercy on us at the time of need )**
+## Security Considerations **-...If you reading this than it's probably too late but still might wanna **
 
 - API key must be kept safely **(outside of darknet and other spots with frightening names)**
 - Input validation for URLs **-... so you will never f^\*k it up**
-- HTTPS recommended over HTTP **-...because more letters is always better + sounds real deep, smart and secure**
+- HTTPS recommended over HTTP **-...because having more letters is always better + sounds real deep, smart and secure**
 
 Future upgrades of this project are planned once Melania will return to the White House.
