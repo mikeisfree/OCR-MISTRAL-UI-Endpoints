@@ -163,15 +163,15 @@ raise``` 5. Reload your web app
 ## Some Features **(World Class. Not seen anywhere else. Last one blasts the competion out of the water)**
 
 - Automatic retry on failed OCR attempts - shame I havent had this before in my life
-- Exponential backoff between retries
-- Detailed error logging **-...you will get 1000 lines of logs from which important are lines 1: error and 1000:kill process. Rest is gibberish.**
-- User friendly error messages in UI -**...so user friendly you will beg the script to crash and notify you**
+- Base64 image extraction from PDFs and viewing in .md preview mode
+- Detailed error logging **-...you will get 1000 lines of logs from which important are: "1:error" and "1000:kill process" - rest is plain gibberish.**
+- User friendly error messages in UI -**...so user friendly you will beg the script notify crash**
 
-## Limitations **( if below 21...else...put on rocket shoes search Youtube for "2 Unlimited")**
+## Limitations **(if below 21... else ...put on rocket shoes search Youtube for "2 Unlimited")**
 
 - Requires valid PDF URL **(blablabla)**
 - Processing time depends on PDF size **-... and complexity (the more complexion the higher risk of exploexion)**
-- Mistral rate limits-... **( "2 Unlimited" is the answer again... or some bucks )**
+- Mistral rate limits-... **( "2 Unlimited" again... or few bucks )**
 
 ## Security Considerations-... **( God have mercy on us at the time of need )**
 
