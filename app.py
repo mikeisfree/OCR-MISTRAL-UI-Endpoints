@@ -5,6 +5,8 @@ import json
 import time
 import traceback
 import logging
+import re
+from urllib.parse import urlparse
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -16,6 +18,21 @@ app = Flask(__name__)
 # Configuration
 MAX_RETRIES = 3
 
+def get_direct_pdf_url(url):
+    """Convert various sharing URLs to direct PDF download links"""
+    
+    # Google Drive
+    gdrive_pattern = r'https://drive\.google\.com/file/d/(.*?)/view'
+    if match := re.match(gdrive_pattern, url):
+        file_id = match.group(1)
+        return f'https://drive.google.com/uc?export=download&id={file_id}'
+    
+    # Add more services as needed
+    # Example: Dropbox, OneDrive, etc.
+    
+    # If no conversion needed, return original URL
+    return url
+
 def process_ocr_with_retry(url, include_image_base64=True):
     """Process OCR with retry logic for reliability"""
     retries = 0
@@ -26,7 +43,11 @@ def process_ocr_with_retry(url, include_image_base64=True):
             api_key = os.environ.get("MISTRAL_API_KEY")
             if not api_key:
                 raise ValueError("MISTRAL_API_KEY environment variable not set")
-                
+            
+            # Convert URL if needed
+            direct_url = get_direct_pdf_url(url)
+            logger.debug(f"Using direct URL: {direct_url}")
+            
             with Mistral(api_key=api_key) as client:
                 logger.debug(f"Sending OCR request for URL: {url}")
                 
@@ -35,9 +56,9 @@ def process_ocr_with_retry(url, include_image_base64=True):
                     model="mistral-ocr-latest",  # Changed from "Focus" to "mistral-ocr-latest"
                     document={
                         "type": "document_url",
-                        "document_url": url
+                        "document_url": direct_url
                     },
-                    include_image_base64=include_image_base64
+                    include_image_base64=True
                 )
                 
                 logger.debug("OCR request successful")
@@ -51,6 +72,25 @@ def process_ocr_with_retry(url, include_image_base64=True):
     
     logger.error(f"All OCR attempts failed: {str(last_exception)}")
     raise last_exception
+
+from mistralai.models import OCRResponse
+
+def replace_images_in_markdown(markdown_str: str, images_dict: dict) -> str:
+    """Replace image references with base64 data in markdown"""
+    for img_name, base64_str in images_dict.items():
+        markdown_str = markdown_str.replace(
+            f"![{img_name}]({img_name})", 
+            f"![{img_name}]({base64_str})"
+        )
+    return markdown_str
+
+def get_combined_markdown(ocr_response: OCRResponse) -> str:
+    """Combine OCR results with embedded images"""
+    markdowns = []
+    for page in ocr_response.pages:
+        image_data = {img.id: img.image_base64 for img in page.images}
+        markdowns.append(replace_images_in_markdown(page.markdown, image_data))
+    return "\n\n".join(markdowns)
 
 # Main UI route
 @app.route('/')
@@ -75,10 +115,8 @@ def process_ocr():
                 "format": "json"
             })
         else:
-            # Extract markdown content
-            markdown_content = ""
-            for page in ocr_response.pages:
-                markdown_content += page.markdown + "\n\n"
+            # Use enhanced markdown processing with images
+            markdown_content = get_combined_markdown(ocr_response)
             
             return jsonify({
                 "status": "success",
@@ -102,12 +140,9 @@ def api_markdown():
         logger.info(f"Processing OCR for URL: {url} (Markdown API)")
         ocr_response = process_ocr_with_retry(url)
         
-        # Extract markdown content
-        markdown_content = ""
-        for page in ocr_response.pages:
-            markdown_content += page.markdown + "\n\n"
+        # Use enhanced markdown processing
+        markdown_content = get_combined_markdown(ocr_response)
         
-        # Return plain markdown with proper content type
         return Response(
             markdown_content,
             mimetype='text/markdown',
@@ -117,6 +152,8 @@ def api_markdown():
         logger.error(f"Error in api_markdown: {str(e)}")
         logger.error(traceback.format_exc())
         return jsonify({"status": "error", "message": str(e)}), 500
+    
+    
 # API endpoint for JSON output
 @app.route('/api/json', methods=['GET'])
 def api_json():

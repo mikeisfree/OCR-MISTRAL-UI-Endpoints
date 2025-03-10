@@ -1,6 +1,7 @@
 # PDF-OCR-MISTRAL API TOOL TO CRUSH YOUR ENEMIES
 
-A Flask-based web application and API that performs OCR on PDF documents using Mistral AI's OCR service.
+A Flask-based web application for OCR PDF documents.
+Brought to You by: Mistral AI: OCR.
 
 ## Absurdly Overpovered Project Structure
 
@@ -15,19 +16,18 @@ ROOT/
 
 ## Features that will involve you into a state of nirvana
 
-- Modern black & white web interface for PDF OCR processing
-- REST API endpoints for JSON and Markdown output
-- Support for remote PDF URLs
-- Automatic retry mechanism with exponential backoff
-- Comprehensive error handling and logging
-- Direct result display in UI with download option
+- Modern black & white design **-...will make you feel like watching sunset through brick wall in a dark tunnel**
+- REST API endpoints for JSON and Markdown output **-...you dont want to miss out on this one!**
+- Support for remote PDF URLs **-...very powerfull support**
+- Automatic retry mechanism with exponential backoff **- so back off!**
+- Comprehensive error handling and logging **-...whatever that means**
 
 ## Prerequisites which will make you feel like a real hacker
 
-- Python 3.x
-- Mistral AI API key
+- Python 3.x **(but install once)**
+- Mistral AI API key **(found somewhere in France)**
 
-## Installation as enjoyable as trip to the dentist
+## Installation **-...as enjoyable as trip to the dentist**
 
 1. Clone the repository
 2. Install dependencies:
@@ -42,20 +42,23 @@ pip install -r requirements.txt
 # Windows PowerShell
 $env:MISTRAL_API_KEY="your_api_key_here"
 
-# Linux/macOS/hipsterXOS - Temporary (forever because 5minutes feels sometimes like an eternity)
+# Linux/macOS/hipsterXOS - Temporary (extandable to eternity while listening to a 5 minute dad joke)
 export MISTRAL_API_KEY="your_api_key_here"
 
-# Linux/macOS - Permanent (might last longer than Ozzy Osbourne. Future generations will name schools after you)
+# Linux/macOS - Permanent (lasts longer than Ozzy Osbourne career)
 
 echo 'export MISTRAL_API_KEY="your_api_key_here"' >> ~/.bashrc
 source ~/.bashrc
 
 # For Bash'ers (add to ~/.bashrc or ~/.bash_profile or do wtatever you want tough guy - YoloForLife! ):
+
+4. Smash that "python app.py"
+4. Allow mayor to name schools after You
 ```
 
-## Usage sharp as volwerine claws
+## Usage **-...sharp as Volverine claws**
 
-### Running so fast it got Forrest Gump nickname
+### Running **(so fast it got nickname after "Forrest Gump")**
 
 1. Start the Flask application:
 
@@ -63,32 +66,32 @@ source ~/.bashrc
 python app_new.py
 ```
 
-2. Access the web interface at: http://127.0.0.1:5000
+2. Unleash the fury at: http://127.0.0.1:5000
 
-### API Endpoints (startpoints are paid feature...call me...)
+### API Endpoints **(startpoints are paid feature...call me...)**
 
-1. JASON (crazy stuff.No limits.Loves his mother):
+1. JASON **(Crazy stuff. Vorhees has No limits but Loves his mother)**:
 
 ```plaintext
 GET /api/json?url=https://example.com/document.pdf
 ```
 
-2. Markdown (Tango down with a twist):
+2. Markdown **(same as Tangodown but with a twist)**:
 
 ```plaintext
 GET /api/markdown?url=https://example.com/document.pdf
 ```
 
-## How It Works (pass on this one. No human can posses force so strong)
+## How It Works **Pass on this one. No human can posses force so strong**
 
 1. Web InYourface:
 
-   - Input PDF URL (or else I don't know what You are doing here)
-   - Choose output format (JSON/Markdown) - ahhhh Democracy
+   - Input PDF URLn **-...or else I don't know what You are doing here**
+   - Choose output format (JSON/Markdown) **-...ahhhh Democracy**
    - Results displayed brightly inYourface through the interface
-   - Option to download results (what more a man can ask for?)
+   - Option to download results **-...what more a man can ask for?**
 
-2. API Endpoints (cherry on top):
+2. API Endpoints **(cherry on top)**:
 
    - Direct access to OCR functionality
    - JSON endpoint returns full OCR data
@@ -96,20 +99,20 @@ GET /api/markdown?url=https://example.com/document.pdf
    - Includes error handling and retry mechanism
    - Full DVR over intergalactic CTE and 7Ghz of mortadelas
 
-3. OCR Processing( last one is a fake. Added for fame and woman attention ):
-   - Uses Mistral AI's OCR service
-   - Supports multiple page documents
-   - Handles image extraction and text recognition (girls...call me...)
+3. OCR Processing: **-... last item added for fame and to grasp womans attention**
+   - Uses Mistral new OCR model **- ....Vive La France!**
+   - Supports multiple page documents **-...most probably.**
+   - Handles image extraction and text recognition **-...girls...call me...**
 
-## Deployment (depyl...deplu...just dump it somewhere)
+## Deployment **(depyl...deplu...just dump it somewhere)**
 
-### Option 1: Selfhost on Mighty Raspberry Pi (Wordclass solution but not for the faint-hearted)
+### Option 1: Selfhost on Mighty Raspberry Pi**(Wordclass solution but not for faint-hearted)**
 
-1. if You dont know how than watch Youtube or don't touch it at all unnless you got spare time to waste and VIP health insurance
+1. if You dont know how - watch Youtube or don't touch it at all unnless you got spare time to waste and VIP health insurance
 
-### Option 2: PythonAnywhere.com (Free.Works everywhere and nowhere.Nice UI. Looks somwhere between Marty Mcfly and Honey I shrinked the kids)
+### Option 2: PythonAnywhere.com **(Free plan. Works everywhere and nowhere. Nice user UI - Retro style brings back to somwhere in between Marty Mcfly and "Honey I shrinked the kids")**
 
-1. Create a Python Anywhere account
+1. Create a PythonAnywhere account
 2. Upload your code
 3. Create a new web app:
    - Choose Flask framework
@@ -145,37 +148,35 @@ except Exception as e:
 logger.error(f"Failed to import app: {str(e)}")
 raise``` 5. Reload your web app
 
-### Option 2: Render (easy-peasy just don't push it...)
+### Option 2: Render **(easy-peasy and free ...just don't push it)**
 
-1. Connect your GitHub repository
-2. Create new Web Service
+1. Connect your GitHub nerdsitory
+2. Create new Web Service **-...or find yourself a hobby**
 3. Build Command
    - pip install -r requirements.txt
 4. Start Command
    - python app.py
 5. Set environment variables:
    - MISTRAL_API_KEY
-6. Deploy
+6. Deploy, **Command&Conquer**
 
-## Some Features ( World Class not seen anywhere else )
+## Some Features **(World Class. Not seen anywhere else. Last one blasts the competion out of the water)**
 
-- Automatic retry on failed OCR attempts
+- Automatic retry on failed OCR attempts - shame I havent had this before in my life
 - Exponential backoff between retries
-- Detailed error logging
-- User-friendly error messages in UI
+- Detailed error logging **-...you will get 1000 lines of logs from which important are lines 1: error and 1000:kill process. Rest is gibberish.**
+- User friendly error messages in UI -**...so user friendly you will beg the script to crash and notify you**
 
-**especially the last one blasts the competion out of the water**
+## Limitations **( if below 21...else...put on rocket shoes search Youtube for "2 Unlimited")**
 
-## Limitations ( if below 21...else...put on rocket shoes search Youtube for "2 Unlimited")
+- Requires valid PDF URL **(blablabla)**
+- Processing time depends on PDF size **-... and complexity (the more complexion the higher risk of exploexion)**
+- Mistral rate limits-... **( "2 Unlimited" is the answer again... or some bucks )**
 
-- Requires valid PDF URL (blablabla)
-- Processing time depends on PDF size and complexity (the more complexion the higher risk of exploexion)
-- Mistral rate limits ( "2 Unlimited" is the answer again... or some bucks )
+## Security Considerations-... **( God have mercy on us at the time of need )**
 
-## Security Considerations ( God have mercy on us at the time of need )
+- API key must be kept safely **(outside of darknet and other spots with frightening names)**
+- Input validation for URLs **-... so you will never f^\*k it up**
+- HTTPS recommended over HTTP **-...because more letters is always better + sounds real deep, smart and secure**
 
-- API key must be kept safely (outside of darknet and other spots with frightening names)
-- Input validation for URLs so you will never f^\*k it up
-- HTTPS recommended over HTTP because more letters is always better + sounds real deep, smart and secure
-
-Future upgrades of this project are planned after Melania will return to the White House.
+Future upgrades of this project are planned once Melania will return to the White House.
